@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const MonthlyRecord = require('../models/monthlyRecord');
+const MonthlyRecord = require('../models/monthly_record');
 
 // Tüm kayıtları getir
 router.get('/', async (req, res) => {

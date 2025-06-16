@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Truck = require('../models/truck');
 const axios = require('axios');
-const MonthlyRecord = require('../models/monthlyRecord');
+const MonthlyRecord = require('../models/monthly_record');
 
 // Yeni kamyon ekle
 router.post('/', async (req, res) => {

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const MonthlyRecord = require('../models/monthlyRecord');
+const MonthlyRecord = require('../models/monthly_record');
 
 // MongoDB Atlas Bağlantı URL'i
 const MONGODB_URI = 'mongodb+srv://admin:admin@cluster0.wqau3dn.mongodb.net/truckDB?retryWrites=true&w=majority&appName=Cluster0';
