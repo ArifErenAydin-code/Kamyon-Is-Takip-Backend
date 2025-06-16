@@ -34,11 +34,10 @@ app.use((req, res, next) => {
 // CORS ayarları
 app.use(cors({
   origin: [
-    'https://kamyon-takip.vercel.app', // Senin Vercel'deki frontend adresin
-    'http://localhost:5173'            // Bu, kendi bilgisayarında (localde) projeyi geliştirirken kullanılır. Eğer sadece Vercel'de çalışacaksan silebilirsin.
+    'https://kamyon-is-takip-frontend.vercel.app',
+    'https://kamyon-takip.vercel.app',
+    'http://localhost:3000'
   ],
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type'],
   credentials: true
 }));
 
