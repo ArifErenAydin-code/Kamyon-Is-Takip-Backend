@@ -9,13 +9,32 @@ const { spawn } = require('child_process');
 
 // Geçici dosya depolama ayarları
 const storage = multer.diskStorage({
-    destination: './uploads/',
-    filename: function(req, file, cb) {
-        cb(null, 'temp_' + Date.now() + path.extname(file.originalname));
+    destination: function (req, file, cb) {
+        cb(null, './uploads/');
+    },
+    filename: function (req, file, cb) {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+        cb(null, 'temp_' + uniqueSuffix + path.extname(file.originalname));
     }
 });
 
-const upload = multer({ storage: storage });
+// Dosya filtreleme
+const fileFilter = (req, file, cb) => {
+    // Sadece resim dosyalarını kabul et
+    if (file.mimetype.startsWith('image/')) {
+        cb(null, true);
+    } else {
+        cb(new Error('Sadece resim dosyaları yüklenebilir!'), false);
+    }
+};
+
+const upload = multer({
+    storage: storage,
+    fileFilter: fileFilter,
+    limits: {
+        fileSize: 5 * 1024 * 1024 // 5MB limit
+    }
+});
 
 // YOLO ile görüntü işleme
 async function detectWithYOLO(imagePath) {
